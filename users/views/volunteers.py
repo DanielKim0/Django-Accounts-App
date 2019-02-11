@@ -7,6 +7,6 @@ from ..forms import VolunteerSignUpForm
 from ..models import User
 
 class VolunteerSignUpView(CreateView):
+    template_name = 'signup.html'
     form_class = VolunteerSignUpForm
     success_url = reverse_lazy('login')
-    template_name = 'signup.html'

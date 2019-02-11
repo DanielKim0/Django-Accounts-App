@@ -1,9 +1,9 @@
 # users/forms.py
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User
+from users.models import User
 
-class VolunteerCreationForm(UserCreationForm):
+class VolunteerSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
 
@@ -12,10 +12,9 @@ class VolunteerCreationForm(UserCreationForm):
         user.user_type = 1
         if commit:
             user.save()
-        volunteer = Volunteer.objects.create(user=user)
         return user
 
-class NGOCreationForm(UserCreationForm):
+class NGOSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
 
@@ -24,10 +23,9 @@ class NGOCreationForm(UserCreationForm):
         user.user_type = 2
         if commit:
             user.save()
-        ngo = NGO.objects.create(user=user)
         return user
 
-class CompanyCreationForm(UserCreationForm):
+class CompanySignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
 
@@ -36,5 +34,4 @@ class CompanyCreationForm(UserCreationForm):
         user.user_type = 3
         if commit:
             user.save()
-        company = Company.objects.create(user=user)
         return user
